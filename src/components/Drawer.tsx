@@ -7,6 +7,8 @@ import HelpScene from '../screens/Help';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/Register';
 import ForgetPassword from '../screens/ForgetPassword';
+import SignUp from '../screens/Signup';
+import OtpScreen from '../screens/Otp';
 
 const Drawer = createDrawerNavigator();
 
@@ -30,6 +32,8 @@ export default function DrawerNavigator() {
       <Drawer.Screen name="Login" component={LoginScreen} />
       <Drawer.Screen name="Register" component={RegisterScreen} />
       <Drawer.Screen name="Forget" component={ForgetPassword} />
+      <Drawer.Screen name="SignUp" component={SignUp} />
+      <Drawer.Screen name="Otp" component={OtpScreen} />
 
     </Drawer.Navigator>
   );
