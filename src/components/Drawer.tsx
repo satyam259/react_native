@@ -5,6 +5,8 @@ import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navi
 import HomeScene from '../screens/HomeScreen';
 import HelpScene from '../screens/Help';
 import LoginScreen from '../screens/LoginScreen';
+import RegisterScreen from '../screens/Register';
+import ForgetPassword from '../screens/ForgetPassword';
 
 const Drawer = createDrawerNavigator();
 
@@ -26,6 +28,8 @@ export default function DrawerNavigator() {
       <Drawer.Screen name="Home" component={HomeScene} />
       <Drawer.Screen name="Help" component={HelpScene} />
       <Drawer.Screen name="Login" component={LoginScreen} />
+      <Drawer.Screen name="Register" component={RegisterScreen} />
+      <Drawer.Screen name="Forget" component={ForgetPassword} />
 
     </Drawer.Navigator>
   );

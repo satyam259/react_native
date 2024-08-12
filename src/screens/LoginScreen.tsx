@@ -1,8 +1,10 @@
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
+import { ScrollView } from 'react-native-gesture-handler'
 
 const LoginScreen = () => {
   return (
+    <ScrollView>
     <View style={styles.container}>
       <Text style={styles.heading}>Welcome</Text>
       <Text  style={styles.heading}>Back!</Text>
@@ -17,11 +19,12 @@ const LoginScreen = () => {
         style={styles.input}
         />
         <Text style={styles.forget}>Forget Password?</Text>
-        <Pressable style={styles.login}>
-            <Text style={styles.loginText}>Login</Text>
+        <Pressable style={styles.button}>
+            <Text style={styles.buttontxt}>Login</Text>
         </Pressable>
         <Text style={{textAlign:"center", marginTop:16, fontSize:16}}>Create An Account? <Text style={styles.createAccount}>Sign up</Text></Text>
     </View>
+    </ScrollView>
   )
 }
 
@@ -50,14 +53,14 @@ const styles = StyleSheet.create({
         marginTop:7,
         fontWeight:"500"
     },
-    login:{
+    button:{
         backgroundColor:'red',
         padding:16,
         textAlign:"center",
         borderRadius:8,
         marginTop:32
     },
-    loginText:{
+    buttontxt:{
         color:'white',
         textAlign:"center",
         fontSize:20,

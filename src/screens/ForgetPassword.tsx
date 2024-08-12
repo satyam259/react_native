@@ -2,38 +2,27 @@ import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 
-const RegisterScreen = () => {
+const ForgetPassword = () => {
   return (
     <ScrollView>
     <View style={styles.container}>
-      <Text style={styles.heading}>Create an</Text>
-      <Text  style={styles.heading}>account</Text>
+      <Text style={styles.heading}>Forget</Text>
+      <Text  style={styles.heading}>password?</Text>
         <TextInput
-        placeholder='Username or Email'
+        placeholder='Enter your email address'
         placeholderTextColor='gray'
         style={styles.input}
         />
-        <TextInput
-        placeholder='Password'
-        placeholderTextColor='gray'
-        style={styles.input}
-        />
-        <TextInput
-        placeholder='Confirm Password'
-        placeholderTextColor='gray'
-        style={styles.input}
-        />
-              <Text style={{marginTop:16, fontSize:14}}>By clicking the <Text style={{color:"red", fontWeight:"500"}}>Register</Text> button,you agree to the public offer</Text>
+       <Text style={{marginTop:16, fontSize:14}}><Text style={styles.msg}>* </Text>We will send you a message to set or reset your new password</Text>
         <Pressable style={styles.button}>
-            <Text style={styles.buttontxt}>Create Account</Text>
+            <Text style={styles.buttontxt}>Submit</Text>
         </Pressable>
-        <Text style={{textAlign:"center", marginTop:16, fontSize:16}}>I Already Have an Account <Text style={{color:"red", fontWeight:"600", textDecorationLine:"underline" }}>Login</Text></Text>
     </View>
     </ScrollView>
   )
 }
 
-export default RegisterScreen
+export default ForgetPassword
 
 const styles = StyleSheet.create({
     heading:{
@@ -52,6 +41,12 @@ const styles = StyleSheet.create({
         width:"100%",
         marginTop:23
     },
+    forget:{
+        color:'red',
+        textAlign:"right",
+        marginTop:7,
+        fontWeight:"500"
+    },
     button:{
         backgroundColor:'red',
         padding:16,
@@ -65,4 +60,8 @@ const styles = StyleSheet.create({
         fontSize:20,
         fontWeight:"600"
     },
+    msg:{
+        color:'red',
+        fontWeight:"500"
+    }
 })
