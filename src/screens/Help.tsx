@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     width: 140,
     height: 40,
     padding: 8,
-    backgroundColor: 'dodgerblue',
+    backgroundColor: '#0d79ad',
     borderRadius: 4,
     elevation: 8,
     justifyContent: 'center',
