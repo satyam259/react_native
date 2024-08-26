@@ -1,65 +1,88 @@
 import React, { useState } from 'react';
-import { FlatList, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView, View, FlatList, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import * as Animatable from 'react-native-animatable';
+import BookLab from '../screens/BookLab';
+import ScheduleLab from '../screens/ScheduleLab'; // Import other screens you need
 
-interface DataItem {
-  key: string;
-  job: string;
-}
-
-const data: DataItem[] = [
-  { key: '1', job: 'Book Labs' },
-  { key: '2', job: 'Schedule Lab' },
-  { key: '3', job: 'Upcoming Appointment' },
+const data = [
+  { key: '1', job: 'BookLabs' }, // No space in 'BookLabs'
+  { key: '2', job: 'ScheduleLab' }, // No space in 'ScheduleLab'
+  { key: '3', job: 'UpcomingAppointment' }, // This should be removed if no matching screen
 ];
 
-const items = data; // Your array of items
 const _colors = {
   inactive: '#63B4FF1A',
-  hoverBackground: '#4894FE', // Color when hovered
-  hoverText: '#FFFFFF', // Text color when hovered
+  hoverBackground: '#4894FE',
+  hoverText: '#FFFFFF',
 };
 
 const _spacing = 14;
 
 const LabScreen: React.FC = () => {
+  const [currentScreen, setCurrentScreen] = useState<string>('BookLabs'); // Manage internal navigation
   const [zoomedItem, setZoomedItem] = useState<string | null>(null);
+
+  const renderContent = () => {
+    switch (currentScreen) {
+      case 'BookLabs':
+        return <BookLab />;
+      case 'ScheduleLab':
+        return <ScheduleLab />;
+      default:
+        console.warn('Unknown screen:', currentScreen); 
+        return <BookLab />; // Fallback case
+    }
+  };
 
   return (
     <ScrollView>
       <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 8 }}>
         <FlatList
           style={{ flexGrow: 0 }}
-          data={items}
+          data={data}
           keyExtractor={(item) => item.key}
           contentContainerStyle={{ paddingLeft: _spacing }}
           showsHorizontalScrollIndicator={false}
           horizontal
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              onPressIn={() => setZoomedItem(item.key)}
-              onPressOut={() => setZoomedItem(null)}
-            >
-              <Animatable.View
-                animation={zoomedItem === item.key ? 'bounceIn' : undefined}
-                duration={400} // Increased duration for visibility
-                style={[
-                  styles.button,
-                  zoomedItem === item.key && styles.buttonZoomed,
-                ]}
+          renderItem={({ item }) => {
+            let formattedJob;
+            try {
+              formattedJob = String(item.job).replace(/([A-Z])/g, ' $1').trim();
+            } catch (error) {
+              console.error("Error formatting job:", error);
+              formattedJob = String(item.job); // Ensure item.job is treated as a string
+            }
+
+            return (
+              <TouchableOpacity
+                onPressIn={() => setZoomedItem(item.key)}
+                onPressOut={() => setZoomedItem(null)}
+                onPress={() => setCurrentScreen(item.job)} // Directly set the job name
               >
-                <Text
-                  style={{
-                    color: zoomedItem === item.key ? _colors.hoverText : '#4894FE',
-                    fontWeight: '700',
-                  }}
+                <Animatable.View
+                  animation={zoomedItem === item.key ? 'bounceIn' : undefined}
+                  duration={400}
+                  style={[
+                    styles.button,
+                    zoomedItem === item.key && styles.buttonZoomed,
+                  ]}
                 >
-                  {item.job}
-                </Text>
-              </Animatable.View>
-            </TouchableOpacity>
-          )}
+                  <Text
+                    style={{
+                      color: zoomedItem === item.key ? _colors.hoverText : '#4894FE',
+                      fontWeight: '700',
+                    }}
+                  >
+                    {formattedJob} {/* Display with spaces */}
+                  </Text>
+                </Animatable.View>
+              </TouchableOpacity>
+            );
+          }}
         />
+      </View>
+      <View style={{ padding: _spacing }}>
+        {renderContent()} {/* Render the selected content */}
       </View>
     </ScrollView>
   );
@@ -72,12 +95,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 72,
     borderRadius: 25,
     backgroundColor: _colors.inactive,
-    shadowOffset: { width: 0, height: 4 }, // Shadow offset
-    shadowOpacity: 0.3, // Shadow opacity
-    shadowRadius: 4, // Shadow radius
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
   },
   buttonZoomed: {
-    transform: [{ scale: 1.1 }], // Slight zoom effect
+    transform: [{ scale: 1.1 }],
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.5,
@@ -86,8 +109,6 @@ const styles = StyleSheet.create({
 });
 
 export default LabScreen;
-
-
 
 
 // import {

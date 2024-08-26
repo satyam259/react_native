@@ -1,32 +1,18 @@
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-// import Ionicons from 'react-native-vector-icons/Ionicons';
-// import ProfileScreen from '../screens/ProfileScreen';
-// const Tab = createBottomTabNavigator();
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import LabScreen from '../screens/Lab';
+import BookLab from '../screens/BookLab';
 
-//  const HomeTabNavigator: React.FC = () => (
-//   <Tab.Navigator
-//     screenOptions={({ route }) => ({
-//       tabBarIcon: ({ color, size }) => {
-//         let iconName: string;
+const Stack = createNativeStackNavigator();
 
-//         switch (route.name) {
-//           case 'Home':
-//             iconName = 'home';
-//             break;
-//           case 'Profile':
-//             iconName = 'person';
-//             break;
-//           default:
-//             iconName = 'help-circle'; // Default icon if needed
-//         }
-
-//         return <Ionicons name={iconName} size={size} color={color} />;
-//       },
-//     })}
-//   >
-//     {/* <Tab.Screen name="Home" component={HomeScreen} /> */}
-//     <Tab.Screen name="Profile" component={ProfileScreen} />
-//   </Tab.Navigator>
-// );
-
-// export default HomeTabNavigator
+export default function HomeTabNavigator() {
+  return (
+    // <NavigationContainer>
+    <Stack.Navigator initialRouteName="Lab">
+      <Stack.Screen name="LabScreen" component={LabScreen} />
+      {/* Other screens if needed */}
+    </Stack.Navigator>
+//   </NavigationContainer>
+  );
+}

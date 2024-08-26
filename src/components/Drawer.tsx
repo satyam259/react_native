@@ -12,6 +12,8 @@ import OtpScreen from '../screens/Otp';
 import OnBoardingScreen from '../screens/OnBoarding';
 import LandingScreen from '../screens/LandingPage';
 import LabScreen from '../screens/Lab';
+import HomeTabNavigator from '../navigation/HomeTab';
+import BookLab from '../screens/BookLab';
 
 const Drawer = createDrawerNavigator();
 
@@ -34,13 +36,14 @@ export default function DrawerNavigator() {
       <Drawer.Screen name="Help" component={HelpScene} />
       <Drawer.Screen name="Landing" component={LandingScreen} />
       <Drawer.Screen name="Login" component={LoginScreen} />
+      <Drawer.Screen name="Card" component={BookLab} />
       <Drawer.Screen name="Register" component={RegisterScreen} />
       <Drawer.Screen name="Forget" component={ForgetPassword} />
       <Drawer.Screen name="SignUp" component={SignUp} />
       <Drawer.Screen name="Otp" component={OtpScreen} />
       <Drawer.Screen name="OnBoarding" component={OnBoardingScreen} />
-      <Drawer.Screen name="labScreen" component={LabScreen} />
-
+      <Drawer.Screen name="homeScreen" component={HomeTabNavigator} />
+      
     </Drawer.Navigator>
   );
 }

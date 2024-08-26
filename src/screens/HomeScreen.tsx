@@ -10,56 +10,53 @@ import {
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome5';
 import FeatherIcon from 'react-native-vector-icons/Feather';
-interface PlaceTypes{
-    id:number,
-    img: String,
-    name:String ,
-    dates: String,
-    price:number ,
-    rating:number ,
-    reviews:number,
+
+interface NewsArticleTypes {
+  id: number;
+  img: string;
+  headline: string;
+  publishedDate: string;
+  description: string;
 }
-const places:PlaceTypes[] = [
+
+const newsArticles: NewsArticleTypes[] = [
   {
     id: 1,
-    img: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
-    name: 'Marbella, Spain',
-    dates: 'Apr 23 - May 5',
-    price: 200,
-    rating: 4.45,
-    reviews: 124,
+    img: 'https://images.deccanherald.com/deccanherald%2F2024-08-23%2Fxh1lkwwe%2FPTI08_10_2024_000366B.jpg?rect=0%2C26%2C4050%2C2025&auto=format%2Ccompress&fmt=webp&fit=max&format=webp&q=70&w=400&dpr=2',
+    headline: "Kolkata doctor's rape case stirs controversy",
+    publishedDate: 'August 23, 2024',
+    description: 'A shocking incident in Kolkata has led to widespread protests and demands for justice...',
+
   },
   {
     id: 2,
-    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
-    name: 'Baveno, Italy',
-    dates: 'Apr 25 - May 5',
-    price: 320,
-    rating: 4.81,
-    reviews: 409,
+    img: 'https://imgeng.jagran.com/images/2024/08/23/article/image/RGKARHOSPITALRAPE-1724380378010.webp',
+    headline: 'Baveno, Italy: A hidden gem revealed',
+    publishedDate: 'August 22, 2024',
+    description: 'Discover the beauty of Baveno, a quaint town in Italy that is quickly becoming a top travel destination...',
   },
   {
     id: 3,
-    img: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80',
-    name: 'Tucson, Arizona',
-    dates: 'Apr 22 - May 4',
-    price: 695,
-    rating: 4.3,
-    reviews: 72,
+    img: 'https://images.thequint.com/thequint%2F2024-08-22%2Fk03z2058%2FScreenshot%202024-08-23%20at%2001.33.14.png?auto=format%2Ccompress&fmt=webp&width=720',
+    headline: 'Tucson, Arizona: A photographer\'s paradise',
+    publishedDate: 'August 20, 2024',
+    description: 'Tucson offers breathtaking landscapes that attract photographers from around the world...',
   },
 ];
 
 export default function HomeScene() {
-  const [saved, setSaved] = useState<String[]>([]);
+  const [saved, setSaved] = useState<number[]>([]);
 
-  const handleSave = useCallback((id: number) => {
-    const stringId = id.toString(); // Convert id to string
-    if (saved.includes(stringId)) {
-      setSaved(saved.filter(val => val !== stringId));
-    } else {
-      setSaved([...saved, stringId]);
-    }
-  }, [saved]);
+  const handleSave = useCallback(
+    (id: number) => {
+      if (saved.includes(id)) {
+        setSaved(saved.filter((val) => val !== id));
+      } else {
+        setSaved([...saved, id]);
+      }
+    },
+    [saved]
+  );
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#f2f2f2' }}>
@@ -72,79 +69,61 @@ export default function HomeScene() {
               onPress={() => {
                 // handle onPress
               }}>
-              <FeatherIcon
-                color="blue"
-                name="sliders"
-                size={21} />
+              <FeatherIcon color="blue" name="sliders" size={21} />
             </TouchableOpacity>
           </View>
         </View>
 
-        <Text style={styles.headerTitle}>Places to stay</Text>
+        <Text style={styles.headerTitle}>Latest News</Text>
       </View>
 
       <ScrollView contentContainerStyle={styles.content}>
-        {places.map(
-          ({ id, img, name, dates, price, rating, reviews }, index) => {
-            const isSaved = saved.includes(id.toString());
+        {newsArticles.map(({ id, img, headline, publishedDate, description, rating }) => {
+          const isSaved = saved.includes(id);
 
-            return (
-              <TouchableOpacity
-                key={id}
-                onPress={() => {
-                  // handle onPress
-                }}>
-                <View style={styles.card}>
-                  <View style={styles.cardLikeWrapper}>
-                    <TouchableOpacity onPress={() => handleSave(id)}>
-                      <View style={styles.cardLike}>
-                        <FontAwesome
-                          color={isSaved ? '#ea266d' : '#222'}
-                          name="heart"
-                          solid={isSaved}
-                          size={20} />
-                      </View>
-                    </TouchableOpacity>
-                  </View>
-
-                  <View style={styles.cardTop}>
-                    <Image
-                      alt=""
-                      resizeMode="cover"
-                      style={styles.cardImg}
-                      source={{ uri: img as string }} />
-                  </View>
-
-                  <View style={styles.cardBody}>
-                    <View style={styles.cardHeader}>
-                      <Text style={styles.cardTitle}>{name}</Text>
-
+          return (
+            <TouchableOpacity
+              key={id}
+              onPress={() => {
+                // handle onPress
+              }}>
+              <View style={styles.card}>
+                <View style={styles.cardLikeWrapper}>
+                  <TouchableOpacity onPress={() => handleSave(id)}>
+                    <View style={styles.cardLike}>
                       <FontAwesome
-                        color="#ea266d"
-                        name="star"
-                        solid={true}
-                        size={12}
-                        style={{ marginBottom: 2 }} />
-
-                      <Text style={styles.cardStars}>{rating}</Text>
-
-                      <Text style={{ color: '#595a63' }}>
-                        ({reviews} reviews)
-                      </Text>
+                        color={isSaved ? '#ea266d' : '#222'}
+                        name="heart"
+                        solid={isSaved}
+                        size={20}
+                      />
                     </View>
-
-                    <Text style={styles.cardDates}>{dates}</Text>
-
-                    <Text style={styles.cardPrice}>
-                      <Text style={{ fontWeight: '600' }}>${price} </Text>/
-                      night
-                    </Text>
-                  </View>
+                  </TouchableOpacity>
                 </View>
-              </TouchableOpacity>
-            );
-          },
-        )}
+
+                <View style={styles.cardTop}>
+                  <Image
+                    alt=""
+                    resizeMode="cover"
+                    style={styles.cardImg}
+                    source={{ uri: img }}
+                  />
+                </View>
+
+                <View style={styles.cardBody}>
+                  <View style={styles.cardHeader}>
+                    <Text style={styles.cardTitle}>{headline}</Text>
+                    
+                  </View>
+
+                  <Text style={styles.cardDates}>{publishedDate}</Text>
+
+                  <Text style={styles.cardDescription}>{description}</Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+          );
+        })}
       </ScrollView>
     </SafeAreaView>
   );
@@ -155,7 +134,6 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     paddingHorizontal: 16,
   },
-  /** Header */
   header: {
     paddingHorizontal: 16,
     marginBottom: 12,
@@ -177,7 +155,6 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#1d1d1d',
   },
-  /** Card */
   card: {
     position: 'relative',
     borderRadius: 8,
@@ -242,9 +219,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#595a63',
   },
-  cardPrice: {
+  cardDescription: {
     marginTop: 6,
-    fontSize: 16,
-    color: '#232425',
+    fontSize: 14,
+    color: '#595a63',
   },
 });
