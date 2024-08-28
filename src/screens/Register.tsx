@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
+import { Image, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 
@@ -6,6 +6,13 @@ const RegisterScreen = () => {
   return (
     <ScrollView>
     <View style={styles.container}>
+        <View style={styles.logo}>
+
+    <Image 
+            source={require('../assests/Mycorralogo.png')}
+            style={styles.image}
+          />
+        </View>
       <Text style={styles.heading}>Create an</Text>
       <Text  style={styles.heading}>account</Text>
         <TextInput
@@ -23,11 +30,11 @@ const RegisterScreen = () => {
         placeholderTextColor='gray'
         style={styles.input}
         />
-              <Text style={{marginTop:16, fontSize:14}}>By clicking the <Text style={{color:"red", fontWeight:"500"}}>Register</Text> button,you agree to the public offer</Text>
+              <Text style={{marginTop:16, fontSize:14}}>By clicking the <Text style={{color:"#7aa73f", fontWeight:"500"}}>Register</Text> button,you agree to the public offer</Text>
         <Pressable style={styles.button}>
             <Text style={styles.buttontxt}>Create Account</Text>
         </Pressable>
-        <Text style={{textAlign:"center", marginTop:16, fontSize:16}}>I Already Have an Account <Text style={{color:"red", fontWeight:"600", textDecorationLine:"underline" }}>Login</Text></Text>
+        <Text style={{textAlign:"center", marginTop:16, fontSize:16}}>I Already Have an Account <Text style={{color:"#7aa73f", fontWeight:"600", textDecorationLine:"underline" }}>Login</Text></Text>
     </View>
     </ScrollView>
   )
@@ -52,8 +59,19 @@ const styles = StyleSheet.create({
         width:"100%",
         marginTop:23
     },
+    logo:{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems:'center'
+    },
+    image: {
+        width: 200, 
+        height: 150, 
+        resizeMode: 'contain',  
+        
+      },
     button:{
-        backgroundColor:'red',
+        backgroundColor:'#7aa73f',
         padding:16,
         textAlign:"center",
         borderRadius:8,

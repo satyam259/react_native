@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
 // Update the main component's export and fix the name to match the purpose
 const BookLab: React.FC = () => {
   return (
-    <ScrollView>
+    
 
     <View style={{ padding: 20 }}>
        <NewsCard
@@ -82,7 +82,7 @@ const BookLab: React.FC = () => {
       />
    
     
-       <NewsCard
+       {/* <NewsCard
         headline="Breaking News: React Native Simplifies Mobile Development"
         subheadline="Published: August 23, 2024"
         imageUrl="https://cdn.photofunia.com/effects/breaking-news/icons/huge.jpg"
@@ -100,9 +100,9 @@ const BookLab: React.FC = () => {
         headline="Breaking News: React Native Simplifies Mobile Development"
         subheadline="Published: August 23, 2024"
         imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShkr08xv_mW05JZ50j7a5Q-CgYnLzKhslJwQ&s"
-      />
+      /> */}
   </View>
-    </ScrollView>
+   
   );
 };
 
