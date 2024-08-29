@@ -339,16 +339,15 @@ import MiniHeader from '../components/MiniHeader';
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import RecommendedNews from './Recommended';
 interface WindowDimension {
   width: number;
   height: number;
 }
 
 const HomeScreen = ({navigation}: any) => {
-  const {height: windowHeight, width: windowWidth}: WindowDimension =
-    useWindowDimensions();
-  const width = Dimensions.get('window').width;
-  const height = Dimensions.get('window').height;
+    const { width: screenWidth } = Dimensions.get('window');;
+ 
 
   interface NewsItem {
     title: string;
@@ -414,17 +413,17 @@ const HomeScreen = ({navigation}: any) => {
           <Icon name='search' size={34} style={styles.icon} />
         </View>
       </View>
-        <View style={{flex: 1}}>
-        <MiniHeader label="Recommended" />
+        <MiniHeader label="Breaking News" />
+        <View style={{flex: 1,paddingHorizontal:20}}>
           <Carousel
             loop
-            width={width - 30}
-            height={width / 2.5}
+            width={screenWidth-40 }
+            height={screenWidth / 1.9}
             autoPlay
             data={newsData}
-            scrollAnimationDuration={1000}
+            // scrollAnimationDuration={1000}
             withAnimation={{type: 'timing', config: {}}}
-            mode="parallax"
+            // mode="parallax"
        
             renderItem={renderCarouselItem}
           />
@@ -433,13 +432,9 @@ const HomeScreen = ({navigation}: any) => {
      
         <View>
         <MiniHeader label="Recommended" />
-<ScrollView
-  contentContainerStyle={{
-    paddingBottom: hp(20),
-  }}
->
+<ScrollView>
   
-   <BookLab/>
+   <RecommendedNews/>
  
 </ScrollView>
 </View>

@@ -38,7 +38,7 @@ const style= StyleSheet.create({
         
     },
     view:{
-        fontSize:14,
+        fontSize:18,
         fontWeight:"600",
         color:"black",
         fontFamily: "SpaceGroteskBold",
@@ -47,8 +47,6 @@ const style= StyleSheet.create({
       backgroundColor: '#7aa73f',
       paddingVertical: 8,
       paddingHorizontal:15,
-      // borderRadius: 8,
-      // width: 100,
       alignSelf: 'flex-start',
       marginTop: 10,
       marginLeft:10

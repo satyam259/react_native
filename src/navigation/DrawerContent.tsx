@@ -73,21 +73,22 @@ const CustomDrawer: React.FC<DrawerContentComponentProps> = (props) => {
       <View
         style={{
           borderTopWidth: 1,
-          borderTopColor: "#ccc",
+          borderTopColor: "black",
         }}
       >
         <Text style={styles.preferences}>Preferences</Text>
         <View style={styles.switchTextContainer}>
         </View>
       </View>
-      <View style={{ padding: 20, borderTopWidth: 1, borderTopColor: "#ccc" }}>
+      <View style={{ padding: 20, borderTopWidth: 1, borderTopColor: "black" }}>
         <TouchableOpacity onPress={() => {}} style={{ paddingVertical: 15 }}>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <Icon name="share" size={22} />
+            <Icon name="share" size={22} color={"black"} />
             <Text
               style={{
                 fontSize: 15,
                 marginLeft: 5,
+                color:"black"
               }}
             >
               Tell a Friend
@@ -96,11 +97,12 @@ const CustomDrawer: React.FC<DrawerContentComponentProps> = (props) => {
         </TouchableOpacity>
         <TouchableOpacity style={{ paddingVertical: 15 }}>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <Icon name="exit-to-app" size={22} />
+            <Icon name="exit-to-app" size={22} color={"black"} />
             <Text
               style={{
                 fontSize: 15,
                 marginLeft: 5,
+                color:"black"
               }}
             >
               Sign Out
@@ -130,7 +132,7 @@ const styles = StyleSheet.create({
   },
   preferences: {
     fontSize: 16,
-    color: "#ccc",
+    color: "black",
     paddingTop: 10,
     fontWeight: "500",
     paddingLeft: 20,

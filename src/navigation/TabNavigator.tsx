@@ -1,6 +1,5 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-
 import { DrawerNavigationProp } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TouchableOpacity } from 'react-native';
@@ -8,7 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
 import { DrawerParamList } from '../types';
 import { HomeStackNavigator } from './DrawerNavigator';
-import OnBoardingScreen from '../screens/OnBoarding';
+import Category from '../screens/Category';
 
 
 const Tab = createBottomTabNavigator();
@@ -18,7 +17,28 @@ const TabNavigator = () => {
     const navigation = useNavigation<DrawerNavigation>();
   
     return (
-      <Tab.Navigator>
+      <Tab.Navigator screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName: string = ''; 
+
+          
+          if (route.name === 'Home') {
+            iconName = focused ? 'home' : 'home-outline';
+          } else if (route.name === 'OnBoarding') {
+            iconName = focused ? 'information-circle' : 'information-circle-outline';
+          }
+
+        
+          if (!iconName) {
+            iconName = 'home'; 
+          }
+
+          // Return the icon component with the selected icon name
+          return <Icon name={iconName} size={size} color={color} />;
+        },
+        tabBarActiveTintColor: '#7aa73f',
+        tabBarInactiveTintColor: 'gray',
+      })}>
         <Tab.Screen
           name="Home"
           component={HomeStackNavigator}
@@ -30,12 +50,12 @@ const TabNavigator = () => {
           }}
         />
         <Tab.Screen
-          name="OnBording"
-          component={OnBoardingScreen}
+          name="Discover"
+          component={Category}
           options={{
             headerShown: true,
             tabBarIcon: ({ color, size }) => (
-              <Icon name="article" color={color} size={size} />
+              <Icon name="explore" color={color} size={size} />
             ),
             headerLeft: () => (
               <TouchableOpacity onPress={() => navigation.openDrawer()}>
