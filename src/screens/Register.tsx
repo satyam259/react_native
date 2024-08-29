@@ -9,7 +9,7 @@ const RegisterScreen = () => {
         <View style={styles.logo}>
 
     <Image 
-            source={require('../assests/Mycorralogo.png')}
+            source={require('../assets/Mycorralogo.png')}
             style={styles.image}
           />
         </View>

@@ -13,7 +13,7 @@ const OnBoardingScreen = () => {
   return (
     <ImageBackground
       style={{flex: 1}}
-      source={require("../assests/banner.jpg")}
+      source={require("../assets/banner.jpg")}
     >
       <View style={styles.container}>
         <View style={styles.centerContentStyle}>

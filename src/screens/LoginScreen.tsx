@@ -145,7 +145,7 @@ const LoginScreen: React.FC = () => {
         <View style={styles.container}>
 
           <Image 
-            source={require('../assests/Mycorralogo.png')}
+            source={require('../assets/Mycorralogo.png')}
             style={styles.image}
           />
           <Text style={styles.heading}> Create New Account</Text>

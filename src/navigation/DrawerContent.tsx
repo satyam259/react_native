@@ -27,12 +27,12 @@ const CustomDrawer: React.FC<DrawerContentComponentProps> = (props) => {
         }}
       >
         <ImageBackground
-          source={require("../assests/background.jpg")}
+          source={require("../assets/background.jpg")}
           style={{ padding: 20 }}
         >
           <Image
             alt="User Avatar"
-            source={require("../assests/user.jpg")}
+            source={require("../assets/user.jpg")}
             style={styles.userAvatar}
           />
           <Text
@@ -46,7 +46,7 @@ const CustomDrawer: React.FC<DrawerContentComponentProps> = (props) => {
           </Text>
         </ImageBackground>
         <View style={{ flex: 1, backgroundColor: "#fff", paddingTop: 10 }}>
-          {/* {/ Custom Drawer Items with Icons /} */}
+  
           <DrawerItem
             label="Home"
             icon={({ color, size }) => (
@@ -55,25 +55,18 @@ const CustomDrawer: React.FC<DrawerContentComponentProps> = (props) => {
             onPress={() => props.navigation.navigate('Home')}
           />
           <DrawerItem
-            label="Categories"
+            label="Login"
             icon={({ color, size }) => (
               <Icon name="person" color={color} size={size} />
             )}
-            onPress={() => props.navigation.navigate('Categories')}
+            onPress={() => props.navigation.navigate('Login')}
           />
-          <DrawerItem
-            label="Settings"
+                    <DrawerItem
+            label="Register"
             icon={({ color, size }) => (
-              <Icon name="settings" color={color} size={size} />
+              <Icon name="person" color={color} size={size} />
             )}
-            onPress={() => props.navigation.navigate('Settings')}
-          />
-          <DrawerItem
-            label="Support"
-            icon={({ color, size }) => (
-              <Icon name="support" color={color} size={size} />
-            )}
-            onPress={() => props.navigation.navigate('Support')}
+            onPress={() => props.navigation.navigate('Register')}
           />
         </View>
       </DrawerContentScrollView>
@@ -85,18 +78,6 @@ const CustomDrawer: React.FC<DrawerContentComponentProps> = (props) => {
       >
         <Text style={styles.preferences}>Preferences</Text>
         <View style={styles.switchTextContainer}>
-          {/* <Switch
-            trackColor={{ false: "#767577", true: "#81b0ff" }}
-            thumbColor="#f4f3f4"
-            style={{ transform: [{ scaleX: 0.9 }, { scaleY: 0.9 }] }}
-          /> */}
-          {/* <Text
-            style={{
-              fontSize: 15,
-            }}
-          >
-            Dark Theme
-          </Text> */}
         </View>
       </View>
       <View style={{ padding: 20, borderTopWidth: 1, borderTopColor: "#ccc" }}>
