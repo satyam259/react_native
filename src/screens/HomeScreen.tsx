@@ -113,7 +113,7 @@
 // //                 <View style={styles.cardBody}>
 // //                   <View style={styles.cardHeader}>
 // //                     <Text style={styles.cardTitle}>{headline}</Text>
-                    
+
 // //                   </View>
 
 // //                   <Text style={styles.cardDates}>{publishedDate}</Text>
@@ -226,7 +226,6 @@
 // //   },
 // // });
 
-
 // import { View, ScrollView, StyleSheet, StatusBar } from "react-native";
 // import React, { useState } from "react";
 // import { SafeAreaView } from "react-native-safe-area-context";
@@ -242,7 +241,7 @@
 // import LatestNews from "./LatestNews";
 // import NewsSection from "./NewsSection";
 // const HomeScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
-  
+
 //   // Breaking News
 //   // const { data, isLoading: isBreakingLoading } = useQuery({
 //   //   queryKey: ["breakingNewss"],
@@ -263,7 +262,7 @@
 //       <TouchableOpacity onPress={() => navigation.openDrawer()}>
 //             <Icon name='menu' size={34} style={styles.icon} />
 //           </TouchableOpacity>
-//         <Image 
+//         <Image
 //           source={require('../assests/Mycorralogo.png')}
 //           style={styles.image}
 //         />
@@ -272,16 +271,13 @@
 //         </View>
 //       </View>
 
-
 //           <View>
 
-//             <MiniHeader  label="Breaking News" /> 
+//             <MiniHeader  label="Breaking News" />
 //              <LatestNews/>
 //           </View>
 //             {/* <BookLab/> */}
-         
-       
-    
+
 //    <View>
 
 //           <MiniHeader label="Recommended" />
@@ -290,12 +286,12 @@
 //               paddingBottom: hp(80),
 //             }}
 //           >
-            
+
 //              <BookLab/>
-           
+
 //           </ScrollView>
 //    </View>
-       
+
 //       </View>
 //     </SafeAreaView>
 //   );
@@ -311,14 +307,13 @@
 //     color: '#7aa73f',
 //   },
 //   image: {
-//     width: 100, 
-//     height: 50, 
+//     width: 100,
+//     height: 50,
 //     resizeMode: 'contain',
 //     marginTop: 10,
 //     marginLeft: 10,
 //   }
 // });
-
 
 import {
   View,
@@ -332,13 +327,11 @@ import {
 } from 'react-native';
 
 import React from 'react';
-import { Text} from 'react-native';
+import {Text} from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
-import BookLab from './BookLab';
 import MiniHeader from '../components/MiniHeader';
-import Icon from "react-native-vector-icons/MaterialIcons";
-import { heightPercentageToDP as hp } from "react-native-responsive-screen";
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 import RecommendedNews from './Recommended';
 interface WindowDimension {
   width: number;
@@ -346,123 +339,127 @@ interface WindowDimension {
 }
 
 const HomeScreen = ({navigation}: any) => {
-    const { width: screenWidth } = Dimensions.get('window');;
- 
+  const {width: screenWidth} = Dimensions.get('window');
 
   interface NewsItem {
     title: string;
     description: string;
     imageUrl: string;
   }
-  
+
   const newsData: NewsItem[] = [
     {
       title: 'Breaking News 1',
-      description: 'Description of breaking news 1 if text is big remove it or show ..',
-      imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVvOlhJpA7cIdQHShXA9t4GXFs3MlgOEf3jw&s',
+      description:
+        'Description of breaking news 1 if text is big remove it or show ..',
+      imageUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVvOlhJpA7cIdQHShXA9t4GXFs3MlgOEf3jw&s',
     },
     {
-      title: "HT News Desk",
-      description: 'Chhatrapati Shivaji Maharaj statue collapse: FIR filed against contractor Jaydeep Apte',
-      imageUrl: 'https://www.hindustantimes.com/ht-img/img/2024/08/27/550x309/PTI08-26-2024-000178B-0_1724729221777_1724729248876.jpg',
+      title: 'HT News Desk',
+      description:
+        'Chhatrapati Shivaji Maharaj statue collapse: FIR filed against contractor Jaydeep Apte',
+      imageUrl:
+        'https://www.hindustantimes.com/ht-img/img/2024/08/27/550x309/PTI08-26-2024-000178B-0_1724729221777_1724729248876.jpg',
     },
     {
-      title: "Rajat Pandit",
+      title: 'Rajat Pandit',
       description: 'Indian, Chinese warships dock in Colombo, send out ripples',
-      imageUrl: 'https://static.toiimg.com/thumb/msid-112817028,imgsize-1315581,width-400,resizemode-4/112817028.jpg',
+      imageUrl:
+        'https://static.toiimg.com/thumb/msid-112817028,imgsize-1315581,width-400,resizemode-4/112817028.jpg',
     },
   ];
- 
-    const renderCarouselItem = ({ item }: { item: NewsItem }) => (
-      <View style={styles.itemContainer}>
-        <Image source={{ uri: item.imageUrl }} style={styles.image} resizeMode="cover" />
-        <View style={styles.overlay}>
-          <Text style={styles.title} numberOfLines={2} ellipsizeMode="tail">
-            {item.title}
-          </Text>
-          <Text style={styles.description} numberOfLines={3} ellipsizeMode="tail">
-            {item.description}
-          </Text>
-        </View>
+
+  const renderCarouselItem = ({item}: {item: NewsItem}) => (
+    <View style={styles.itemContainer}>
+      <Image
+        source={{uri: item.imageUrl}}
+        style={styles.image}
+        resizeMode="cover"
+      />
+      <View style={styles.overlay}>
+        <Text style={styles.title} numberOfLines={2} ellipsizeMode="tail">
+          {item.title}
+        </Text>
+        <Text style={styles.description} numberOfLines={3} ellipsizeMode="tail">
+          {item.description}
+        </Text>
       </View>
-    );
-  
-   
+    </View>
+  );
+
   const carousel = StyleSheet.create({
     safeContainer: {
       flex: 1,
     },
     scrollViewContent: {
-      paddingBottom: 60, 
+      paddingBottom: 60,
     },
   });
   return (
     <SafeAreaView style={carousel.safeContainer}>
       <ScrollView contentContainerStyle={carousel.scrollViewContent}>
-      <StatusBar backgroundColor="black" />
-       <View>
-       <View style={{ flexDirection: 'row', justifyContent: 'space-between' , alignItems:"center"}}>
-       <TouchableOpacity onPress={() => navigation.openDrawer()}>
-             <Icon name='menu' size={34} style={styles.icon} />
-           </TouchableOpacity>
-         <Image 
-          source={require('../assets/Mycorralogo.png')}
-          style={styles.logo}
-        />
-        <View style={{ flexDirection: 'row', marginTop: 10, marginRight: 10 }}>
-          <Icon name='search' size={34} style={styles.icon} />
-        </View>
-      </View>
-        <MiniHeader label="Breaking News" />
-        <View style={{flex: 1,paddingHorizontal:20}}>
-          <Carousel
-            loop
-            width={screenWidth-40 }
-            height={screenWidth / 1.9}
-            autoPlay
-            data={newsData}
-            // scrollAnimationDuration={1000}
-            withAnimation={{type: 'timing', config: {}}}
-            // mode="parallax"
-       
-            renderItem={renderCarouselItem}
-          />
-         
-        </View>
-     
+        <StatusBar backgroundColor="black" />
         <View>
-        <MiniHeader label="Recommended" />
-<ScrollView>
-  
-   <RecommendedNews/>
- 
-</ScrollView>
-</View>
-</View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}>
+            <TouchableOpacity onPress={() => navigation.openDrawer()}>
+              <Icon name="menu" size={34} style={styles.icon} />
+            </TouchableOpacity>
+            <Image
+              source={require('../assets/Mycorralogo.png')}
+              style={styles.logo}
+            />
+            <View
+              style={{flexDirection: 'row', marginTop: 10, marginRight: 10}}>
+              <Icon name="search" size={34} style={styles.icon} />
+            </View>
+          </View>
+          <View>
+            <MiniHeader label="Breaking News" />
+            <View style={{flex: 1, justifyContent: 'center'}}>
+              <Carousel
+                loop
+                width={screenWidth}
+                height={200}
+                autoPlay
+                data={newsData}
+                renderItem={renderCarouselItem}
+              />
+            </View>
+          </View>
+
+          <View>
+              <RecommendedNews />
+          </View>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
 };
 
-
 export default HomeScreen;
 
-
 const styles = StyleSheet.create({
- 
-  carouselContainer:{
-    paddingHorizontal: 20, 
-    marginBottom: 20, 
+  carouselContainer: {
+    paddingHorizontal: 20,
+    marginBottom: 20,
   },
   itemContainer: {
+    flex: 1,
     borderRadius: 8,
     backgroundColor: '#fff',
+    marginHorizontal: 10,
     // marginBottom: 10,
     overflow: 'hidden',
   },
   image: {
     width: '100%',
-    height: 200,
+    height: '100%',
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
@@ -482,14 +479,14 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   icon: {
-        marginLeft: 8,
-        color: '#7aa73f',
-      },
-      logo: {
-        width: 100, 
-        height: 50, 
-        resizeMode: 'contain',
-        marginTop: 10,
-        marginLeft: 10,
-      }
+    marginLeft: 8,
+    color: '#7aa73f',
+  },
+  logo: {
+    width: 100,
+    height: 50,
+    resizeMode: 'contain',
+    marginTop: 10,
+    marginLeft: 10,
+  },
 });

@@ -15,6 +15,7 @@ import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/Register';
 import TabNavigator from './TabNavigator';
 import EnergyNews from '../screens/EnergyNews';
+import RecommendedNews from '../screens/Recommended';
 
 
 const Tab = createBottomTabNavigator();
@@ -44,6 +45,11 @@ export const HomeStackNavigator = () => (
       name="Energy"
       component={EnergyNews}
       options={{ headerShown: true }}
+    />
+    <Stack.Screen
+      name="Recommended"
+      component={RecommendedNews}
+      options={{ headerShown: true}}
     />
   </Stack.Navigator>
 );

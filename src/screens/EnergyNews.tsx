@@ -9,8 +9,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import MiniHeader from '../components/MiniHeader';
+import Button from '../styles/Button';
 
 const { width } = Dimensions.get('window');
 interface News {
@@ -91,7 +90,7 @@ const newsItem = ({ item }: { item: News })=> {
           </Text>
           <Text style={styles.date}>{convertToReadableDate(item.publishedAt)}</Text>
         </View>
-        <Icon name='keyboard-arrow-right' size={26} color='brown' />
+        <Icon name='keyboard-arrow-right' size={26} color='#7aa73f' />
       </View>
     </Pressable>
   );
@@ -104,7 +103,7 @@ export default function EnergyNews() {
 const DisplayNews = ({ news, title }: { news: { data: { articles: News[] } }, title: string }) =>{
   return (
     <View style={styles.container}>
-      <MiniHeader label='Energy News'/>
+      <Button label='Energy News'/>
       <View style={styles.newsList}>
         <FlatList
           data={news.data.articles}
@@ -127,16 +126,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-//   header: {
-//     padding: 16,
-//     borderBottomWidth: 1,
-//     borderBottomColor: '#ddd',
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//     justifyContent: 'space-between',
-//     backgroundColor:"white",
-//     color:"black"
-//   },
   headerTitle: {
     fontSize: 20,
     fontWeight: 'bold',

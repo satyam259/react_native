@@ -5,13 +5,15 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
-import { DrawerParamList } from '../types';
 import { HomeStackNavigator } from './DrawerNavigator';
 import Category from '../screens/Category';
 
 
 const Tab = createBottomTabNavigator();
-  
+  type DrawerParamList={
+    Home:undefined,
+    Discover:undefined
+  }
 const TabNavigator = () => {
     type DrawerNavigation = DrawerNavigationProp<DrawerParamList>;
     const navigation = useNavigation<DrawerNavigation>();

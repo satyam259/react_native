@@ -1,5 +1,8 @@
 import { StyleSheet, Text, View, Pressable, Image, Dimensions, ScrollView } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import MiniHeader from '../components/MiniHeader';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import Button from '../styles/Button';
 
 // Screen dimensions
 const { width } = Dimensions.get('window');
@@ -46,35 +49,75 @@ const items = [
 // Utility functions (dummy implementations)
 const generateRandomImage = () => 'https://via.placeholder.com/150';
 const convertToReadableDate = (dateString:string) => new Date(dateString).toLocaleDateString();
+type RootStackParamList = {
+  Recommended: undefined;
+};
+type NavigationProps = NavigationProp<RootStackParamList>;
 
 const RecommendedNews = () => {
+  const navigation= useNavigation<NavigationProps>();
+    // const [limit, setLimit] = React.useState(3);
+    const [click, setClick]= useState(false)
+  const result =click? items: items.slice(0, 3);
+  const handleLoadMore = () => {
+    setClick(!click)
+    console.log("pressd")
+    navigation.navigate('Recommended')
+  }
   return (
-    <ScrollView style={styles.scrollView}>
-        
+    <View>
+      {handleLoadMore? (<><View>
+        <MiniHeader label='recommend' view={handleLoadMore} />
+      </View><ScrollView style={styles.scrollView}>
+          {result.map((item, index) => (
+            <Pressable key={index} onPress={() => console.log('Card Pressed')}>
+              <View style={styles.cardContainer}>
+                <Image
+                  source={{ uri: item.urlToImage || generateRandomImage() }}
+                  style={styles.image}
+                  resizeMode="cover" />
 
-      {items.map((item, index) => (
-        <Pressable key={index} onPress={() => console.log('Card Pressed')}>
-          <View style={styles.cardContainer}>
-            <Image
-              source={{ uri: item.urlToImage || generateRandomImage() }}
-              style={styles.image}
-              resizeMode="cover"
-            />
+                <View style={styles.textContainer}>
+                  <Text style={[styles.author, styles.mediumFont]}>{item.author}</Text>
+                  <Text style={[styles.title, styles.boldFont]}>
+                    {item.title.length > 0 ? item.title.slice(0, 47) + '...' : item.title}
+                  </Text>
+                  <Text style={[styles.date, styles.mediumFont]}>
+                    {convertToReadableDate(item.publishedAt)}
+                  </Text>
+                </View>
+              </View>
+            </Pressable>
+          ))}
 
-            <View style={styles.textContainer}>
-              <Text style={[styles.author, styles.mediumFont]}>{item.author}</Text>
-              <Text style={[styles.title, styles.boldFont]}>
-                {item.title.length > 0 ? item.title.slice(0, 47) + '...' : item.title}
-              </Text>
-              <Text style={[styles.date, styles.mediumFont]}>
-                {convertToReadableDate(item.publishedAt)}
-              </Text>
-            </View>
-          </View>
-        </Pressable>
-      ))}
-        
-    </ScrollView>
+        </ScrollView></>):(<><View>
+       <Button label='Recommended'/>
+      </View><ScrollView style={styles.scrollView}>
+          {items.map((item, index) => (
+            <Pressable key={index} onPress={() => console.log('Card Pressed')}>
+              <View style={styles.cardContainer}>
+                <Image
+                  source={{ uri: item.urlToImage || generateRandomImage() }}
+                  style={styles.image}
+                  resizeMode="cover" />
+
+                <View style={styles.textContainer}>
+                  <Text style={[styles.author, styles.mediumFont]}>{item.author}</Text>
+                  <Text style={[styles.title, styles.boldFont]}>
+                    {item.title.length > 0 ? item.title.slice(0, 47) + '...' : item.title}
+                  </Text>
+                  <Text style={[styles.date, styles.mediumFont]}>
+                    {convertToReadableDate(item.publishedAt)}
+                  </Text>
+                </View>
+              </View>
+            </Pressable>
+          ))}
+
+        </ScrollView></>)
+      }
+    </View>
+
   );
 };
 
