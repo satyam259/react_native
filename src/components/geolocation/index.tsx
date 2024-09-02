@@ -1,5 +1,5 @@
 export const getLocationUriFromCoords = async (latitude: number, longitude: number): Promise<string> => {
-    const googleMapsApiKey = 'AIzaSyCuRnQYzM-Y-B_kIiahh4HCkw1lL9oBI08';
+    const googleMapsApiKey = 'add-your-key';
     const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${googleMapsApiKey}`;
     try {
       const response = await fetch(geocodeUrl);
