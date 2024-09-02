@@ -12,7 +12,7 @@ import {
 import React from 'react';
 import {Text} from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
-import MiniHeader from '../components/MiniHeader';
+import MiniHeader from '../components/miniHeader';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import RecommendedNews from './Recommended';
