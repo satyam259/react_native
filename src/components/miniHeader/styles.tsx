@@ -1,30 +1,6 @@
-import { View, Text, StyleSheet } from "react-native";
-import React from "react";
-import { TouchableOpacity } from "react-native-gesture-handler";
-interface MiniHeaderProps {
-    label: string;
-    view: () => void; 
-  }
-const MiniHeader: React.FC<MiniHeaderProps> = ({ label,view }) => {
-  return (
-    <View style={style.container}>
-        <TouchableOpacity style={style.headingButton} >
-              <Text style={style.buttonText}>{label}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={style.headingButton}  onPress={view}>
-      <Text
-        style={style.view}
-     >
-        View All
-      </Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
+import { StyleSheet } from "react-native";
 
-export default MiniHeader
-
-const style= StyleSheet.create({
+export const styles= StyleSheet.create({
     container:{
         paddingHorizontal:10,
          marginVertical:8,
@@ -46,7 +22,7 @@ const style= StyleSheet.create({
         fontFamily: "SpaceGroteskBold",
     },
     headingButton:{
-      backgroundColor: '#7aa73f',
+      backgroundColor: '#304586',
       paddingVertical: 8,
       paddingHorizontal:15,
       alignSelf: 'flex-start',
@@ -54,6 +30,7 @@ const style= StyleSheet.create({
       marginLeft:10
 
     },
+   
 
     buttonText: {
       color: '#fff',

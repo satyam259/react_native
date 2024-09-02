@@ -11,11 +11,12 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
 import CustomDrawer from './DrawerContent';
 import HomeScreen from '../screens/HomeScreen';
-import LoginScreen from '../screens/LoginScreen';
+import LoginScreen from '../screens/login';
 import RegisterScreen from '../screens/Register';
 import TabNavigator from './TabNavigator';
-import EnergyNews from '../screens/EnergyNews';
+import EnergyNews from '../screens/energyNews';
 import RecommendedNews from '../screens/Recommended';
+import WebViewScreen from '../components/webView';
 
 
 const Tab = createBottomTabNavigator();
@@ -31,6 +32,7 @@ export const HomeStackNavigator = () => (
       component={HomeScreen}
       options={{ headerShown: false }}
     />
+      <Stack.Screen    options={{ headerShown: false }} name="WebView" component={WebViewScreen} />
     <Stack.Screen
       name="Login"
       component={LoginScreen}

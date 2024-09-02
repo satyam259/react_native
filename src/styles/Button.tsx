@@ -25,7 +25,7 @@ const style= StyleSheet.create({
            flexDirection:"row"
     },
     headingButton:{
-      backgroundColor: '#7aa73f',
+      backgroundColor: '#304586',
       paddingVertical: 8,
       paddingHorizontal:15,
       alignSelf: 'flex-start',

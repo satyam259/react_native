@@ -6,7 +6,7 @@ import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
 import { HomeStackNavigator } from './DrawerNavigator';
-import Category from '../screens/Category';
+import Category from '../screens/category';
 
 
 const Tab = createBottomTabNavigator();
@@ -38,7 +38,7 @@ const TabNavigator = () => {
           // Return the icon component with the selected icon name
           return <Icon name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: '#7aa73f',
+        tabBarActiveTintColor: '#304586',
         tabBarInactiveTintColor: 'gray',
       })}>
         <Tab.Screen
@@ -64,7 +64,7 @@ const TabNavigator = () => {
                 <Icon 
                   name="menu" 
                   size={24} 
-                  color="#7aa73f" 
+                  color="#304586" 
                   style={{ marginLeft: 15 }} 
                 />
               </TouchableOpacity>

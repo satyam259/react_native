@@ -57,14 +57,14 @@ const LoginScreen: React.FC = () => {
       fontSize: 24,
       fontWeight: 'bold',
       marginBottom: 32,
-      color: '#7aa73f'
+      color: '#304586'
     },
     contactheading:{
 
         fontSize: 16,
         fontWeight: 'bold',
         // marginBottom: 32,
-        color: '#7aa73f',
+        color: '#304586',
         textAlign: 'left',
         alignSelf: 'flex-start',
         marginLeft: 20
@@ -98,7 +98,7 @@ const LoginScreen: React.FC = () => {
     },
 
     button: {
-        backgroundColor: '#7aa73f', // Tailwind color bg-gray-800
+        backgroundColor: '#304586', // Tailwind color bg-gray-800
         paddingVertical: 12, // Tailwind class py-2
         paddingHorizontal: 12, // Tailwind class px-4
         borderRadius: 50, // Tailwind class rounded
@@ -145,7 +145,7 @@ const LoginScreen: React.FC = () => {
         <View style={styles.container}>
 
           <Image 
-            source={require('../assets/Mycorralogo.png')}
+            source={require('../../assets/Mycorralogo.png')}
             style={styles.image}
           />
           <Text style={styles.heading}> Create New Account</Text>
